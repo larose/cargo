@@ -1,0 +1,11 @@
+CMD bash
+WORKDIR /tests
+ENV PYTHONPATH=/tests
+
+RUN pip install pytest
+
+COPY tests .
+COPY examples examples
+
+COPY dist/cargo-*.whl /tmp
+RUN pip install /tmp/cargo-*.whl
